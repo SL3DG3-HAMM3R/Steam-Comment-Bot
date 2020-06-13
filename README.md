@@ -1,6 +1,6 @@
-~ Steam Mass Comment Bot ~
-Comment with a few clicks under a bunch of profiles!
-See how to set up the bot and customize it below.
+~ Steam Comment Bot ~
+Kommentiere mehrere Steamaccounts auf einmal.
+Funktionen und Erklärung siehe unten.
 
 
 This bot features two customizeable arrays/lists, one for all steamIDs of the profiles were the bot will comment and one for a selection of comments.
