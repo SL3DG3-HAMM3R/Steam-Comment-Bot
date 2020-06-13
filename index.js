@@ -1,13 +1,13 @@
-//Customizeable variables:
-//Add all profile IDs like this: ["ID1","ID2","ID3"] You can press enter after every comma so that the id's are underneath each other or do it like in the example.
+//Konfiguration:
+//Füge hier die IDs der Accounts ein, welche kommentiert werden sollen: ["ID1","ID2","ID3"]
 const steamIDsToCommentOn = [
 	"ID1",
 	"ID2",
 	"ID3"
 ]
 
-//Add just one Comment inside the brackets to only post this specific comment on all profiles.
-//Add different comments like ["Comment1","Comment2","Comment3"] to randomly select a comment for each profile.
+//Füge nur einen Kommentar ein, um nur ein Kommentar auf den Profilen zu hinterlassen.
+//Füge verschiedene Kommentare ein ["Comment1","Comment2","Comment3"] damit zufällig ein Kommentar gewählt und hinterlassen wird.
 const comments = ["Comment1","Comment2","Comment3"];
 //End
 
@@ -51,15 +51,15 @@ bot.on('loggedOn', () => {
 	fs.appendFileSync('./output.txt', ']')
 	logger(' ')
 	logger('*---------------------*')
-	logger('Bot ' + version + ' successfully logged in.');
+	logger('Bot ' + version + ' erfolgreich eingeloggt.');
 	logger(d())
-	logger('Console output and steamID array can be found in output.txt!')
+	logger('Consolenoutput wird in der output.txt hinterlegt!')
 	const bootend = d() - bootstart
 	logger('Ready after ' + bootend + 'ms!')
 	logger('*---------------------*')
 	logger(' ')
-	logger('Waiting ' + cooldown + 'ms between each comment.')
-	logger('Starting in 5 seconds...')
+	logger('Warte ' + cooldown + 'ms zwischen jedem Kommentar.')
+	logger('Starte in 5 Sekunden...')
 	setTimeout(() => {
 		logger(' ')
 
@@ -74,15 +74,15 @@ bot.on('loggedOn', () => {
 						logger("postUserComment error: " + error);
 						if (error == "Error: HTTP error 429") {
 							logger(" ")					
-							logger("Skipped remaining accounts because of comment cooldown! You can retry them later!")
+							logger("Accounts wurden übersprungen! Deine Accounts haben einen Cooldown. Versuche es später erneut.")
 							logger('*---------------------*')
-							logger("steamID's of failed or skipped comments: [\n")
+							logger("SteamID von fehlgeschlagenen Kommentaren: [\n")
 							steamIDsToCommentOn.forEach(function(element) {
 								logger('"' + element + '",\n');
 							});
 							logger("]")
 							logger('*---------------------*')
-							logger('Check output.txt! Quitting in 5 seconds...')
+							logger('Check output.txt! Schließe in 5 Sekunden...')
 							setTimeout(() => {
 								process.exit();
 							}, 5000)	
@@ -93,18 +93,18 @@ bot.on('loggedOn', () => {
 				});
 
 				if (index >= (steamIDsToCommentOnlength - 1)) {
-					logger("Finished commenting!")
+					logger("Fertig!")
 					if (steamIDsToCommentOn.length <= 1) {
-						logger("There were no failed comments!")
+						logger("Keine fehlgeschlagenen Kommentare!")
 					} else {
 						logger("Check output.txt!")
-						logger("steamID's of failed or skipped comments: [\n")
+						logger("SteamID von fehlgeschlagenen Kommentaren: [\n")
 						steamIDsToCommentOn.forEach(function(element) {
 							logger('"' + element + '",\n');
 						});	
 						logger("]")
 					}
-					logger('Quitting in 5 seconds...')
+					logger('Schließe in 5 Sekunden...')
 					setTimeout(() => {
 						process.exit();
 					}, 5000)
